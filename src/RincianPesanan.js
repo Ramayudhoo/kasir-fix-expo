@@ -1,17 +1,28 @@
 import React from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-function RincianPesanan({ route, navigation }) {
+function RincianPesanan({ route, navigation, updateCart }) {
     const { cart, total } = route.params;  // Menerima data dari navigasi
 
+    
     const updateQuantity = (id, delta) => {
-        const newCart = cart.map(item => {
+        let itemExists = false;
+        const updatedCart = cart.map(item => {
             if (item.id === id) {
+                itemExists = true;
                 const newQuantity = item.quantity + delta;
                 return { ...item, quantity: newQuantity };
             }
             return item;
         });
+
+        if (!itemExists && delta > 0) {
+            // Misalkan Anda mendapatkan item detail dari suatu fungsi atau state
+            const newItem = getItemDetailById(id);
+            updatedCart.push({ ...newItem, quantity: delta });
+        }
+
+        updateCart(updatedCart);
         // Update cart state di PesananBaru jika diperlukan
     };
 

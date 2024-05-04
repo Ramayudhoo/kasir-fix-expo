@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PesananBaru from './PesananBaru';// Pastikan path ini sesuai dengan lokasi file PesananBaru.js Anda
-import HomeScreen from './HomeScreen'; // Ini adalah layar utama Anda
-import RincianPesanan from './RincianPesanan';
+import PesananBaru from './src/PesananBaru';// Pastikan path ini sesuai dengan lokasi file PesananBaru.js Anda
+import HomeScreen from './src/HomeScreen'; // Ini adalah layar utama Anda
+import RincianPesanan from './src/RincianPesanan';
 
 const Stack = createNativeStackNavigator();
 
