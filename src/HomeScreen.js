@@ -8,7 +8,7 @@ function HomeScreen({ navigation }) {
         <View style = {styles.buttonRow}>
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PesananBaru')}>
-        <Text style={styles.buttonText}>Pesanan Baru</Text>
+        <Text style={styles.buttonText}>Pesanan Baru Aghi</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Fasilitas')}>
         <Text style={styles.buttonText}>Fasilitas</Text>
