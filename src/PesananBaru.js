@@ -15,9 +15,26 @@ function PesananBaru({ navigation }) {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   
+  const updateCart = (newCart) => {
+    setCart(newCart);
+  };
+
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    if (existingItem) {
+      // Jika item sudah ada, tingkatkan kuantitasnya
+      const updatedCart = cart.map(cartItem => {
+        if (cartItem.id === item.id) {
+          return { ...cartItem, quantity: (cartItem.quantity || 1) + 1 };
+        }
+        return cartItem;
+      });
+      setCart(updatedCart);
+    } else {
+      // Jika item belum ada, tambahkan ke cart dengan kuantitas awal 1
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
     setTotal(total + item.price);
   };
 
