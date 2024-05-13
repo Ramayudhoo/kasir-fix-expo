@@ -8,10 +8,10 @@ function HomeScreen({ navigation }) {
         <View style = {styles.buttonRow}>
 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PesananBaru')}>
-        <Text style={styles.buttonText}>Pesanan Baru Aghi</Text>
+        <Text style={styles.buttonText}>Pesanan Baru</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Fasilitas')}>
-        <Text style={styles.buttonText}>Fasilitas</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BarcodeScanner')}>
+        <Text style={styles.buttonText}>Barcode</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Isian')}>
         <Text style={styles.buttonText}>Isian</Text>
