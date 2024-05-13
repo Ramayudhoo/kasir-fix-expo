@@ -16,8 +16,8 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Isian')}>
         <Text style={styles.buttonText}>Isian</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PesananBaru')}>
-        <Text style={styles.buttonText}>Pesanan Baru</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TambahItem')}>
+        <Text style={styles.buttonText}>Tambah Item</Text>
       </TouchableOpacity>
       </View>
     </View>
