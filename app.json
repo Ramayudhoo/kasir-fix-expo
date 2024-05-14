@@ -12,7 +12,7 @@
       "backgroundColor": "#ffffff"
     },
     "plugins": [
-      "./node_modules/expo-sample-pedometer/expo-sample-pedometer-plugins.js",
+      "./node_modules/expo-sample-pedometer/expo-sample-pedometer-plugin.js",
       "@react-native-firebase/app",
       [
         "expo-camera",
@@ -23,21 +23,28 @@
         }
       ]
     ],
-
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMotionUsageDescription": "Needs Permission for Steps"
+      }
     },
     "android": {
       "googleServicesFile": "google-services.json",
-      "permissions":
-      ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.kasirfixexpo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
