@@ -2,26 +2,19 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { PermissionsAndroid } from 'react-native';
+import { CameraView, useCameraPermissions} from 'expo-camera';
 
 export default function TambahItem({ navigation }) {
   const [namaItem, setNamaItem] = useState('');
   const [hargaItem, setHargaItem] = useState('');
+  const [facing, setFacing] = useState('back');
+  const [permission, requestPermission] = useCameraPermissions();
 
   const requestCameraPermission = async () => {
     try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        {
-          title: "Izin Akses Kamera",
-          message: "Aplikasi ini membutuhkan akses ke kamera Anda untuk mengambil foto.",
-          buttonNeutral: "Nanti",
-          buttonNegative: "Batal",
-          buttonPositive: "OK"
-        }
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      if (!requestPermission) {
         console.log("Izin kamera diberikan");
-        openCamera();
+        setFacing();
       } else {
         console.log("Izin kamera ditolak");
       }
@@ -30,26 +23,10 @@ export default function TambahItem({ navigation }) {
     }
   };
 
-  const openCamera = async () => {
-    try {
-      const options = {
-        saveToPhotos: true,
-        mediaType: 'photo',
-        includeBase64: false,
-      };
-      const response = await launchCamera(options);
-      if (response.didCancel) {
-        console.log('Batal memilih foto');
-      } else if (response.errorMessage) {
-        console.log('Error:', response.errorMessage);
-      } else {
-        console.log('Foto berhasil dipilih:', response.assets[0].uri);
-      }
-    } catch (error) {
-      console.error('Kesalahan saat membuka kamera:', error);
-    }
-  };
-
+  function toggleCameraFacing() {
+    setFacing(current => (current === 'back' ? 'front' : 'back'));
+  }
+  
   const openGalleryWithCallback = () => {
     const options = { mediaType: 'photo' };
     launchImageLibrary(options, (response) => {
@@ -88,6 +65,8 @@ export default function TambahItem({ navigation }) {
         onChangeText={(text) => setHargaItem(text)}
         keyboardType="numeric"
       />
+      <CameraView style={styles.camera} facing={facing}>
+      </CameraView>
       <Button title="Buka Kamera" onPress={requestCameraPermission} />
       <Button title="Buka Galeri" onPress={openGalleryWithCallback} />
       <Button title="Add" onPress={handleTambahItem} />
