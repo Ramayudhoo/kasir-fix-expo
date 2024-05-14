@@ -12,19 +12,9 @@ export default function TambahItem({ navigation }) {
 
   const requestCameraPermission = async () => {
     try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        {
-          title: "Izin Akses Kamera",
-          message: "Aplikasi ini membutuhkan akses ke kamera Anda untuk mengambil foto.",
-          buttonNeutral: "Nanti",
-          buttonNegative: "Batal",
-          buttonPositive: "OK"
-        }
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      if (!requestPermission) {
         console.log("Izin kamera diberikan");
-        facing();
+        setFacing();
       } else {
         console.log("Izin kamera ditolak");
       }
@@ -32,21 +22,6 @@ export default function TambahItem({ navigation }) {
       console.warn(err);
     }
   };
-
-  if (!permission) {
-    // Camera permissions are still loading.
-    return <View />;
-  }
-
-  if (!permission.granted) {
-    // Camera permissions are not granted yet.
-    return (
-      <View style={styles.container}>
-        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-        <Button onPress={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
 
   function toggleCameraFacing() {
     setFacing(current => (current === 'back' ? 'front' : 'back'));
@@ -91,8 +66,8 @@ export default function TambahItem({ navigation }) {
         keyboardType="numeric"
       />
       <CameraView style={styles.camera} facing={facing}>
-      <Button title="Buka Kamera" onPress={requestCameraPermission} />
       </CameraView>
+      <Button title="Buka Kamera" onPress={requestCameraPermission} />
       <Button title="Buka Galeri" onPress={openGalleryWithCallback} />
       <Button title="Add" onPress={handleTambahItem} />
       <Button title="Discard" onPress={() => navigation.goBack()} />
