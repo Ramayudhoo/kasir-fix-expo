@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "39203531942",
+    "project_id": "kasir-fix-expo",
+    "storage_bucket": "kasir-fix-expo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39203531942:android:a86c4bdf706a662ee91867",
+        "android_client_info": {
+          "package_name": "com.kasir.expo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN_LOQyQWIYgY7oSuEH64WITrZdQNxwMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39203531942:android:8f02886e77c4e18ae91867",
+        "android_client_info": {
+          "package_name": "kasir.fix.expo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN_LOQyQWIYgY7oSuEH64WITrZdQNxwMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
