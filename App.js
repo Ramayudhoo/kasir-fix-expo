@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Provider } from 'react-native-paper'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -22,7 +23,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-  <provider theme={theme}> 
+  <Provider theme={theme}> 
     <NavigationContainer>
       <Stack.Navigator initialRouteName="StartScreen"
       screenOptions={{
@@ -75,7 +76,7 @@ export default function App() {
          />
       </Stack.Navigator>
     </NavigationContainer>
-    </provider>
+    </Provider>
   );
 }
 
